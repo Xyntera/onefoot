@@ -4,7 +4,7 @@ const { Wallet } = require('ethers');
 // Initialize an array to hold the wallet data
 let walletsData = [];
 
-// Generate 100 wallets
+// Generate 500 wallets
 for (let i = 0; i < 500; i++) {
   const wallet = Wallet.createRandom();
   const privateKey = wallet.privateKey;
@@ -28,4 +28,12 @@ fs.writeFileSync(
   'utf8'
 );
 
-console.log('100 Private Keys and Wallet Addresses have been saved!');
+console.log('500 Private Keys and Wallet Addresses have been saved!');
+
+// Now, convert the wallet data to a JSON format
+const outputFile = 'wallet.json';
+
+// Write the wallet data to a JSON file
+fs.writeFileSync(outputFile, JSON.stringify(walletsData, null, 2), 'utf8');
+
+console.log(`Data successfully converted to ${outputFile}`);
